@@ -3,6 +3,7 @@ const INITIAL_STATE = {
     loading: false
 }
 
+
 // Should not write Ajax/Aync code in your reducer
 export default function productReducer(state = INITIAL_STATE, 
                                         action ) {
@@ -11,7 +12,7 @@ export default function productReducer(state = INITIAL_STATE,
         case 'INIT_PRODUCTS':
             return {...state, products: action.payload.products}
         case 'LOADING':
-            return {...state, products: action.payload.loading}
+            return {...state, loading: action.payload.loading}
         default:
             return state;
     }                                            

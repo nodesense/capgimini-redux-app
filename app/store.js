@@ -5,6 +5,9 @@ import {createStore,
 import cartReducer from "./cart/state/cartReducer";
 import productReducer from "./product/state/productReducer";
 
+// middleware
+import thunk from "redux-thunk";
+
 // FLUX- One one Store per React application
 // Many States can be there in a store
 
@@ -52,6 +55,12 @@ function loggerMiddleware(store) {
             console.log("**Type of Action", typeof action)
             console.log("Logger ", action);
 
+            // example of how thunk, implement action as function
+            // if (typeof action === 'function') {
+            //     // call the function, this function is implemented in actions.js
+            //     return action(store.dispatch)
+            // }
+
             // we cannot empty, doesn't reduces
             // if (action.type == 'CART.EMPTY_CART')
             //     return true;
@@ -66,7 +75,7 @@ function loggerMiddleware(store) {
 }
 
 const store = createStore(rootReducer, 
-                          applyMiddleware(loggerMiddleware))
+                          applyMiddleware(loggerMiddleware, thunk))
 
 // store.getState(), output?? { counter: 0, items: [] } object type
 

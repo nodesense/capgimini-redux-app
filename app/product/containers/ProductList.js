@@ -34,8 +34,15 @@ function mapReduxDispatchToReactProps (dispatch) {
 
         //map all the actions with dispatch functionalities
         //create wrappers method for actions
-        //automatically dispatch
+ 
+        fetchProducts: function() {
+            // to make async call in actions.js
+            let actionFn = actions.fetchProducts();
+            dispatch(actionFn);
+        },
+
         actions: bindActionCreators(actions, dispatch),
+
         addItem: bindActionCreators(addItem, dispatch)
     }
 }

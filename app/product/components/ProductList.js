@@ -14,6 +14,7 @@ import ProductWidget from "./ProductWidget";
 
 export default class ProductList extends Component {
 
+    // react -navigation (tab/page title)
     static navigationOptions = {
         title: "Product List"
     }
@@ -24,7 +25,6 @@ export default class ProductList extends Component {
         this._renderItem = this._renderItem.bind(this);
     }
 
-
     componentDidMount() {
         console.log(" product list mounted")
         
@@ -32,6 +32,7 @@ export default class ProductList extends Component {
         // DONOT implement ajax calls here
         // why? Code maintenance
         // React is for presentation
+        this.props.fetchProducts(); // trigger products data to be downloaded
     }
 
     _renderItem2({item}) {
@@ -93,12 +94,12 @@ export default class ProductList extends Component {
              <View style={styles.rightHeaderContainer}>
                   
 
-                 <Button 
-                        title="Cart" 
-                       color='#fff' 
-                       size={23} 
-                       onPress={()=> this.props.navigation.navigate("Cart", {title: 'Cart Page'})} 
-                       style={{padding:5}} />
+            <Button 
+                title="Cart" 
+                color='#fff' 
+                size={23} 
+                onPress={()=> this.props.navigation.navigate("Cart", {title: 'Cart Page'})} 
+                style={{padding:5}} />
 
              </View>
             </View>

@@ -24,3 +24,17 @@ Making Ajax call in React-Redux Apps
 
 Reduc-thunk is a middleware
 helps us to implement ajax as action creators
+
+
+Container                              MiddleWare                    Reducers
+
+dispatch a function                     detect a function
+                                       stop the function
+                                        (not forwarding)
+                                       it calls the function()
+
+
+actions
+   fetch data from products
+   dispatch products data to reducers
+                                        receive object (product list) => FWD to reducers
