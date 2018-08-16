@@ -32,15 +32,19 @@ function ProductWidget(props, context) {
             </View>
            </View>
          <View style={styles.cartIconContainer}>
-          <Icon name="add-shopping-cart" color='#075e54' size={30} style={{ padding:5 }} />
-
-          <Icon name="mode-edit" color='#075e54' 
-                size={30} 
-                style={{ padding:5 }}
+          <Icon name="add-shopping-cart" 
+                color='#075e54' size={30} 
+                style={{ padding:5 }} 
                 
-                onPress={() => props.gotoEdit(item.id)}
-
-                 />
+                onPress= { () => props.addItem({
+                                    id: item.id,
+                                    name: item.name,
+                                    price: item.price,
+                                    qty: 1
+                                  }) }
+                
+                />
+ 
 
          </View>
         </View>

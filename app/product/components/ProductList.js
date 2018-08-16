@@ -54,7 +54,7 @@ export default class ProductList extends Component {
     // create and return a widget per product
     _renderItem({item}) {
         return (<ProductWidget item={item} 
-                               addItemToCart={this.props.addItemToCart}
+                               addItem={this.props.addItem}
 
                                gotoEdit={(id) => this.editProduct(id)}
                   >
