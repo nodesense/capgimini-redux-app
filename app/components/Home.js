@@ -66,6 +66,9 @@ export default class Home extends React.Component {
           <Button title="Cart Tab" 
               onPress={() => this.gotoPage("Cart")} ></Button>
 
+          <Button title="MyWeb" 
+              onPress={() => this.gotoPage("MyWeb")} ></Button>
+
        </View>
      ) 
 

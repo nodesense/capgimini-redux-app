@@ -23,19 +23,36 @@ import store from "./app/store";
 // React Navigation
 import {createBottomTabNavigator, createStackNavigator} from 'react-navigation';
 
+
+import { WebView } from 'react-native';
+ 
 function About() {
   return (
-    <View style={ {marginTop: 200}}>
+    <View style={ {marginTop: 20}}>
       <Text>About Page</Text>
+       
     </View>
   )
+}
+
+
+class MyWeb extends React.Component {
+  render() {
+    return (
+      <WebView
+        source={{uri: 'https://github.com/facebook/react-native'}}
+        style={{marginTop: 20}}
+      />
+    );
+  }
 }
 
 const StackNavigation = createStackNavigator({
   Home: Home,
   Profile: Profile,
   Counter: Counter,
-  About: About
+  About: About,
+  MyWeb: MyWeb
 })
 
 import {connect} from 'react-redux';
