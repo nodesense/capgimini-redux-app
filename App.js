@@ -11,6 +11,8 @@ import Profile from "./app/components/Profile";
 // import default is always alias name
  import Cart from "./app/cart/containers/Cart";
 
+ import ProductList from "./app/product/containers/ProductList";
+
 // Trying to integrate Provider with store, 
 // so that containers can use store
 // only one store per application
@@ -25,6 +27,7 @@ import {createBottomTabNavigator} from 'react-navigation';
 let TabNavigation = createBottomTabNavigator({
   Home: Home,
   'Counter': Counter,
+  ProductList: ProductList,
   Cart: Cart,
   Profile: Profile
 })
