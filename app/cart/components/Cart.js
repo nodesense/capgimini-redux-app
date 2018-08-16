@@ -20,6 +20,10 @@ export default function Cart(props) {
         <View style={styles.container}>
             <Text>Cart Redux</Text>
 
+            <Button title="Logout"
+                        onPress={() => props.logout()}
+            />
+
             <Button title="Add"
                         onPress={() => props.addItem()}
             />

@@ -38,3 +38,7 @@ actions
    fetch data from products
    dispatch products data to reducers
                                         receive object (product list) => FWD to reducers
+
+
+Feedbacks http://tcheck.co/22Rgl5
+

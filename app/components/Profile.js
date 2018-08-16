@@ -19,7 +19,14 @@ export default class Profile extends React.Component {
             employed: true
         }
     }
+
+  static navigationOptions = {
+    title: 'Profile'
+    }
  
+    componentWillUnmount() {
+        Alert.alert('PRofile will be destroyed')
+    }
 
     render() {
        

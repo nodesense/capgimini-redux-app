@@ -34,6 +34,12 @@ export const mapDispatchToProps = (dispatch) => {
             }
 
             dispatch(actions.addItem(item));
+        },
+
+        logout : function() {
+            dispatch({
+                type: 'LOGOUT'
+            })
         }
     }
 }

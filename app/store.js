@@ -32,6 +32,26 @@ function counterReducer(state = 0, action) {
 }
 
 
+//auth/state/authReducer.js
+const INITIAL_AUTH_STATE = {
+    authenticated: false,
+    // userprofile
+    // user token
+}
+
+function authReducer(state = INITIAL_AUTH_STATE, action) {
+    switch(action.type) {
+        case 'LOGIN': 
+            // todo: set token, user profile
+            return {...state, authenticated: true}
+        case 'LOGOUT': 
+            // remove token, clean data
+        return {...state, authenticated: false}
+        default:
+            return state;
+    }
+}
+
 
 // store shall call reducer, whenever we do store.dispatch
 // store shall also reducer, very first time while doing createStore
@@ -43,7 +63,8 @@ const rootReducer = combineReducers({
     // stateName: reducer function() {}
     counter: counterReducer, 
     items: cartReducer,
-    productState: productReducer
+    productState: productReducer,
+    authState: authReducer
     // add as many state with reducers
 })
 

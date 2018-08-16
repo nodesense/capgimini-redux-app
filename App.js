@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 // import default
 
@@ -21,11 +21,55 @@ import {Provider} from 'react-redux';
 import store from "./app/store";
 
 // React Navigation
-import {createBottomTabNavigator} from 'react-navigation';
+import {createBottomTabNavigator, createStackNavigator} from 'react-navigation';
+
+function About() {
+  return (
+    <View style={ {marginTop: 200}}>
+      <Text>About Page</Text>
+    </View>
+  )
+}
+
+const StackNavigation = createStackNavigator({
+  Home: Home,
+  Profile: Profile,
+  Counter: Counter,
+  About: About
+})
+
+import {connect} from 'react-redux';
+
+//auth/components/Login.js
+function Login(props) {
+  return (
+    <View>
+      <Text style={ {height: 30}}>
+        Welcome to Product App, Login First
+      </Text>
+
+      <Button onPress={props.login} title="Login">
+      </Button>
+    </View>
+  )
+}
+
+//auth/containers/Login.js
+let LoginContainer = connect(null,  // mapStateToProps
+                             (dispatch) => {
+                               return {
+                                login: function() {
+                                    dispatch({
+                                      type: 'LOGIN'
+                                    })
+                                }
+                               }
+                             }
+                        ) (Login);
 
 //TabNavigation is a component
 let TabNavigation = createBottomTabNavigator({
-  Home: Home,
+  Home: StackNavigation,
   'Counter': Counter,
   ProductList: ProductList,
   Cart: Cart,
@@ -48,7 +92,14 @@ class App extends React.Component {
       <View style={styles.container}>
         <Text>Welcome to React Native</Text>
 
-        <TabNavigation />
+        {this.props.authenticated &&
+                            <TabNavigation />
+        }
+
+        {
+          !this.props.authenticated &&
+                      <LoginContainer />
+        }
 
         {/* 
         <Home />
@@ -63,10 +114,17 @@ class App extends React.Component {
 }
 
 
+//AppContainer.js
+const AppContainer = connect((state) => {
+  return {
+    authenticated: state.authState.authenticated
+  }
+}, null) (App);
+
 export default function AppProvider() {
   return (
     <Provider store={store}>
-      <App />
+      <AppContainer />
     </Provider>
   ) 
 }

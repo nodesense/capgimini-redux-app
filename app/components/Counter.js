@@ -2,6 +2,12 @@ import React from 'react';
 import {View, Text, Button, Alert, TextInput} from 'react-native';
 
 export default class Counter extends React.Component {
+
+  static navigationOptions = {
+    title: 'Counter'
+  }
+  
+
   // props are passed as constructor argument first time
   // accessible as this.props (keyword)
   // update life cycle: component receive props (later)
@@ -18,6 +24,11 @@ export default class Counter extends React.Component {
       name: 'enter text', // text input
       showList: true,
     }
+  }
+
+  componentDidMount() {
+    const data = this.props.navigation.getParam('source', 'not found');
+    Alert.alert(data)
   }
 
   // keyword, used only if props not passed from parent
